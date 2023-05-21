@@ -20,7 +20,7 @@ class ProfileController1 extends Controller
     {
         $timetable = Timetable::findOrFail($id);
 
-        return view('timetable.edit', compact('timetable'));
+        return view('profile.edit', compact('timetable'));
     }
 
     /**
@@ -35,6 +35,6 @@ class ProfileController1 extends Controller
 
         $timetable->save();
 
-        return redirect()->route('timetable.edit', $timetable->id)->with('status', 'Зміни збережено.');
+        return redirect()->route('profile.edit', $timetable->id)->with('status', 'Зміни збережено.');
     }
 }
