@@ -18,9 +18,9 @@ class ProfileController1 extends Controller
      */
     public function edit(Request $request, $id): View
     {
-        $timetable = Timetable::findOrFail($id);
+        $timetable = timetable::findOrFail($id);
 
-        return view('profile.edit', compact('timetable'));
+        return view('profile.newEdit', ['user' => $request->user(),]);
     }
 
     /**
@@ -28,13 +28,17 @@ class ProfileController1 extends Controller
      */
     public function update(Request $request, $id): RedirectResponse
     {
-        $timetable = Timetable::findOrFail($id);
+        $timetable = timetable::findOrFail($id);
 
-        $timetable->group = $request->input('group');
-        $timetable->grafik = $request->input('grafik');
+        $timetable->date = $request->input('date');
+        $timetable->queue_1 = $request->input('queue_1');
+        $timetable->queue_2 = $request->input('queue_2');
+        $timetable->queue_3 = $request->input('queue_3');
+        $timetable->queue_4 = $request->input('queue_4');
+
 
         $timetable->save();
 
-        return redirect()->route('profile.edit', $timetable->id)->with('status', 'Зміни збережено.');
+        return redirect()->route('profile.newEdit', $timetable->id)->with('status', 'Зміни збережено.');
     }
 }

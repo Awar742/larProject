@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/newEdit', function () {
+    return view('newEdit');
+})->middleware(['auth', 'verified'])->name('newEdit');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/records/{id}/edit',  [\App\Http\Controllers\ProfileController1::class, 'edit'])->name('records.edit');
-Route::put('/records/{id}', [\App\Http\Controllers\ProfileController1::class, 'update'])->name('records.update');
+Route::get('/records/edit',  [\App\Http\Controllers\ProfileController1::class, 'edit'])->name('records.edit');
+Route::put('/records', [\App\Http\Controllers\ProfileController1::class, 'update'])->name('records.update');
 
 require __DIR__.'/auth.php';

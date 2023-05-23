@@ -20,13 +20,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                   <h1>Group:{{ Auth::user()->group }}</h1>
+                    <h1>Group:{{ Auth::user()->group }}</h1>
                     <div class="container">
-{{--                        <h1>Welcome</h1>--}}
-{{--                        <p>Hello, {{ Auth::user()->name }}</p> <!-- Вивід імені користувача -->--}}
+                        {{--                        <h1>Welcome</h1>--}}
+                        {{--                        <p>Hello, {{ Auth::user()->name }}</p> <!-- Вивід імені користувача -->--}}
 
                         @php
-                            $timetableData = \App\Models\Timetable::all(); // Отримати всі дані з таблиці timetable
+                            $timetableData = \App\Models\timetable::all(); // Отримати всі дані з таблиці timetable
                         @endphp
 
                         <table>
